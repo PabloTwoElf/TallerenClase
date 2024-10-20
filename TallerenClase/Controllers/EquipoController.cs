@@ -54,7 +54,7 @@ namespace TallerenClase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,Estadio")] Equipo equipo)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros")] Equipo equipo)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace TallerenClase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,Estadio")] Equipo equipo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros")] Equipo equipo)
         {
             if (id != equipo.Id)
             {

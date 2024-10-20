@@ -15,6 +15,5 @@ namespace TallerenClase.Models
 
         public bool AceptaExtranjeros { get; set; }
 
-        public string Estadio { get; set; }
     }
 }

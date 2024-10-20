@@ -10,22 +10,22 @@ using TallerenClase.Models;
 
 namespace TallerenClase.Controllers
 {
-    public class EstadioController : Controller
+    public class EstadiosController : Controller
     {
         private readonly TallerenClaseContext _context;
 
-        public EstadioController(TallerenClaseContext context)
+        public EstadiosController(TallerenClaseContext context)
         {
             _context = context;
         }
 
-        // GET: Estadio
+        // GET: Estadios
         public async Task<IActionResult> Index()
         {
             return View(await _context.Estadio.ToListAsync());
         }
 
-        // GET: Estadio/Details/5
+        // GET: Estadios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,13 +43,13 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // GET: Estadio/Create
+        // GET: Estadios/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Estadio/Create
+        // POST: Estadios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,7 +65,7 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // GET: Estadio/Edit/5
+        // GET: Estadios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,7 +81,7 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // POST: Estadio/Edit/5
+        // POST: Estadios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,7 +116,7 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // GET: Estadio/Delete/5
+        // GET: Estadios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +134,7 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // POST: Estadio/Delete/5
+        // POST: Estadios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
