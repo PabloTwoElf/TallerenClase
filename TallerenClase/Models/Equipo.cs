@@ -1,12 +1,20 @@
-﻿namespace TallerenClase.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TallerenClase.Models
 {
     public class Equipo
     {
-        Equipo(Id, Nombre, Ciudad, Títulos, AceptaExtranjeros, Estadio)
-            
+        [Key]
         public int Id { get; set; }
-        public String Nombre { get; set; }
 
-        
+        public string Nombre { get; set; }
+
+        public string Ciudad { get; set; }
+
+        public int Titulos { get; set; }
+
+        public bool AceptaExtranjeros { get; set; }
+
+        public string Estadio { get; set; }
     }
 }
