@@ -10,22 +10,22 @@ using TallerenClase.Models;
 
 namespace TallerenClase.Controllers
 {
-    public class EstadiosController : Controller
+    public class EstadioController : Controller
     {
         private readonly TallerenClaseContext _context;
 
-        public EstadiosController(TallerenClaseContext context)
+        public EstadioController(TallerenClaseContext context)
         {
             _context = context;
         }
 
-        // GET: Estadios
+        // GET: Estadio
         public async Task<IActionResult> Index()
         {
             return View(await _context.Estadio.ToListAsync());
         }
 
-        // GET: Estadios/Details/5
+        // GET: Estadio/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,18 +43,18 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // GET: Estadios/Create
+        // GET: Estadio/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Estadios/Create
+        // POST: Estadio/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Direccion,Ciudad,Capacidad")] Estadio estadio)
+        public async Task<IActionResult> Create([Bind("Id,NombreEstadio,Direccion,Ciudad,Capacidad")] Estadio estadio)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // GET: Estadios/Edit/5
+        // GET: Estadio/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,12 +81,12 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // POST: Estadios/Edit/5
+        // POST: Estadio/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Direccion,Ciudad,Capacidad")] Estadio estadio)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreEstadio,Direccion,Ciudad,Capacidad")] Estadio estadio)
         {
             if (id != estadio.Id)
             {
@@ -116,7 +116,7 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // GET: Estadios/Delete/5
+        // GET: Estadio/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +134,7 @@ namespace TallerenClase.Controllers
             return View(estadio);
         }
 
-        // POST: Estadios/Delete/5
+        // POST: Estadio/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

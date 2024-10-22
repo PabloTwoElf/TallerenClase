@@ -22,7 +22,8 @@ namespace TallerenClase.Controllers
         // GET: Equipo
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Equipo.ToListAsync());
+            var tallerenClaseContext = _context.Equipo.Include(e => e.Estadio);
+            return View(await tallerenClaseContext.ToListAsync());
         }
 
         // GET: Equipo/Details/5
@@ -34,6 +35,7 @@ namespace TallerenClase.Controllers
             }
 
             var equipo = await _context.Equipo
+                .Include(e => e.Estadio)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (equipo == null)
             {
@@ -46,6 +48,7 @@ namespace TallerenClase.Controllers
         // GET: Equipo/Create
         public IActionResult Create()
         {
+            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "Id");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace TallerenClase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros")] Equipo equipo)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdEstadio")] Equipo equipo)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace TallerenClase.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "Id", equipo.IdEstadio);
             return View(equipo);
         }
 
@@ -78,6 +82,7 @@ namespace TallerenClase.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "Id", equipo.IdEstadio);
             return View(equipo);
         }
 
@@ -86,7 +91,7 @@ namespace TallerenClase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros")] Equipo equipo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdEstadio")] Equipo equipo)
         {
             if (id != equipo.Id)
             {
@@ -113,6 +118,7 @@ namespace TallerenClase.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "Id", equipo.IdEstadio);
             return View(equipo);
         }
 
@@ -125,6 +131,7 @@ namespace TallerenClase.Controllers
             }
 
             var equipo = await _context.Equipo
+                .Include(e => e.Estadio)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (equipo == null)
             {
