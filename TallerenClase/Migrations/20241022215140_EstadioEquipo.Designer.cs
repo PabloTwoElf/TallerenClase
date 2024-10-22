@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TallerenClase.Data;
 
@@ -10,9 +11,11 @@ using TallerenClase.Data;
 namespace TallerenClase.Migrations
 {
     [DbContext(typeof(TallerenClaseContext))]
-    partial class TallerenClaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241022215140_EstadioEquipo")]
+    partial class EstadioEquipo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,10 +72,6 @@ namespace TallerenClase.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NombreEstadio")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

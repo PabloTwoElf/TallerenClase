@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TallerenClase.Data;
 
@@ -10,9 +11,11 @@ using TallerenClase.Data;
 namespace TallerenClase.Migrations
 {
     [DbContext(typeof(TallerenClaseContext))]
-    partial class TallerenClaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241022215748_EstadioEquipo2")]
+    partial class EstadioEquipo2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
