@@ -20,8 +20,10 @@ namespace TallerenClase.Models
         public Estadio? Estadio { get; set; }
 
         [ForeignKey("Estadio")]
+
         public int? IdEstadio { get; set; }
         
+
 
     }
 }

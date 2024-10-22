@@ -48,7 +48,7 @@ namespace TallerenClase.Controllers
         // GET: Jugador/Create
         public IActionResult Create()
         {
-            ViewData["IdEquipo"] = new SelectList(_context.Equipo, "Id", "Id");
+            ViewData["IdEquipo"] = new SelectList(_context.Equipo, "Id", "Nombre");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace TallerenClase.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEquipo"] = new SelectList(_context.Equipo, "Id", "Id", jugador.IdEquipo);
+            ViewData["IdEquipo"] = new SelectList(_context.Equipo, "Id", "Nombre", jugador.IdEquipo);
             return View(jugador);
         }
 
@@ -82,13 +82,13 @@ namespace TallerenClase.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdEquipo"] = new SelectList(_context.Equipo, "Id", "Id", jugador.IdEquipo);
+
+            // Cambia "Id" por "Nombre" en el SelectList
+            ViewData["IdEquipo"] = new SelectList(_context.Equipo, "Id", "Nombre", jugador.IdEquipo); // Cambiado aquí
             return View(jugador);
         }
 
         // POST: Jugador/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Posicion,Edad,IdEquipo")] Jugador jugador)
@@ -118,10 +118,14 @@ namespace TallerenClase.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEquipo"] = new SelectList(_context.Equipo, "Id", "Id", jugador.IdEquipo);
+
+            
+            ViewData["IdEquipo"] = new SelectList(_context.Equipo, "Id", "Nombre", jugador.IdEquipo); // Cambiado aquí
             return View(jugador);
         }
 
+
+        // GET: Jugador/Delete/5
         // GET: Jugador/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -131,8 +135,9 @@ namespace TallerenClase.Controllers
             }
 
             var jugador = await _context.Jugador
-                .Include(j => j.Equipo)
+                .Include(j => j.Equipo) // Incluye el equipo
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (jugador == null)
             {
                 return NotFound();
@@ -149,16 +154,17 @@ namespace TallerenClase.Controllers
             var jugador = await _context.Jugador.FindAsync(id);
             if (jugador != null)
             {
-                _context.Jugador.Remove(jugador);
+                _context.Jugador.Remove(jugador); // Elimina el jugador del contexto
             }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            await _context.SaveChangesAsync(); // Guarda los cambios
+            return RedirectToAction(nameof(Index)); // Redirige al índice
         }
 
         private bool JugadorExists(int id)
         {
-            return _context.Jugador.Any(e => e.Id == id);
+            return _context.Jugador.Any(e => e.Id == id); // Verifica si el jugador existe
         }
+
     }
 }
