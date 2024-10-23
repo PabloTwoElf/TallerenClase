@@ -48,14 +48,11 @@ namespace TallerenClase.Controllers
         // GET: Equipo/Create
         public IActionResult Create()
         {
-            ViewBag.IdEstadio = new SelectList(_context.Estadio, "Id", "NombreEstadio");
+            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "NombreEstadio"); // Asegúrate de que NombreEstadio es el campo correcto
             return View();
         }
 
-
         // POST: Equipo/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdEstadio")] Equipo equipo)
@@ -66,7 +63,7 @@ namespace TallerenClase.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "Id", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "NombreEstadio", equipo.IdEstadio); // Cambiado a NombreEstadio
             return View(equipo);
         }
 
@@ -83,13 +80,11 @@ namespace TallerenClase.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "Id", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "NombreEstadio", equipo.IdEstadio); // Cambiado a NombreEstadio
             return View(equipo);
         }
 
         // POST: Equipo/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdEstadio")] Equipo equipo)
@@ -119,7 +114,7 @@ namespace TallerenClase.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "Id", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Estadio, "Id", "NombreEstadio", equipo.IdEstadio); // Cambiado a NombreEstadio
             return View(equipo);
         }
 
