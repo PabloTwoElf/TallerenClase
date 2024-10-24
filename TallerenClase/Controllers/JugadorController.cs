@@ -35,7 +35,7 @@ namespace TallerenClase.Controllers
             }
 
             var jugador = await _context.Jugador
-                .Include(j => j.Equipo)
+                .Include(j => j.Equipo) // Asegúrate de incluir el equipo
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (jugador == null)
             {

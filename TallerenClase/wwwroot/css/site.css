@@ -1,22 +1,209 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* Global Styles */
 body {
-  margin-bottom: 60px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background-color: #1a3a56;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    header h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+nav {
+    background-color: #152b40;
+    padding: 10px 0;
+}
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+            nav ul li a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                padding: 5px 10px;
+                transition: color 0.3s ease;
+            }
+
+                nav ul li a:hover {
+                    color: #f39c12;
+                }
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #1a3a56;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #1a3a56;
+    padding-bottom: 10px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #1a3a56;
+    margin-bottom: 30px;
+}
+
+/* Player Cards */
+.player-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+    .player-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .player-card h3 {
+        font-size: 1.5rem;
+        color: #1a3a56;
+        margin-top: 15px;
+    }
+
+    .player-card p {
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .player-card .position {
+        color: #f39c12;
+        font-size: 1.2rem;
+        margin: 5px 0;
+    }
+
+/* Tables */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+    .table thead {
+        background-color: #1a3a56;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+        .table thead th {
+            padding: 15px;
+            text-align: left;
+        }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f39c12;
+        color: #fff;
+    }
+
+    .table tbody td {
+        padding: 15px;
+        border-bottom: 1px solid #ccc;
+    }
+
+/* Buttons */
+.btn-primary {
+    background-color: #1a3a56;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #f39c12;
+    }
+
+/* Footer */
+footer {
+    background-color: #152b40;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+    footer p {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    footer a {
+        color: #f39c12;
+        text-decoration: none;
+    }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .player-card img {
+        height: 200px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+    body {
+        background-image: url('https://ecuadorchronicle.com/wp-content/uploads/2019/02/ligapro.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+
 }
